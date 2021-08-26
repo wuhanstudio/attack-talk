@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>Adversarial Detection</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <link rel="stylesheet" href="reveal.css">
+        <link rel="stylesheet" href="white.css" id="theme">
+        <link rel="stylesheet" href="monokai.css">
+
+    </head>
+
+    <body>
+
+        <div class="reveal">
+
+            <div class="slides">
+
+                <section data-auto-animate>
+                    <h2>Adversarial Detection</h2>
+                    <p style="font-size: 25px">Generating adversarial patches is as easy as drag and drop.</p>
+                    <img src="demo.gif" width="50%">
+                    <p style="font-size: 18px;" class="fragment">Adversarial <span style="color: gray;">Attacks against End-to-End Object</span> Detection</p>
+                </section>
+                <aside class="notes">
+                    Shhh, these are your private notes
+                </aside>
+
+                <section data-auto-animate>
+                    <div class="r-vstack">
+                        <p class="r-fit-text" style="font-size: 20px;">End-to-End deep learning models have been adopted in a variety of tasks.</p>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <div class="r-vstack">
+                        <p class="r-fit-text" style="font-size: 20px;">End-to-End deep learning models have been adopted in a variety of tasks.</p>
+                        <div class="r-hstack">
+                            <div class="r-vstack">
+                                <div class="">
+                                    <img src="detection.png" width="70%">
+                                    <p style="font-size: 20px;">End-to-End Object Detection (Facebook)</p>
+                                </div>
+                                <div class="fragment">
+                                    <img src="driving.png" width="70%">
+                                    <p style="font-size: 20px;">End-to-End Autonomous Driving (NVIDIA)</p>
+                                </div>
+                            </div>
+                            <div class="r-vstack fragment">
+                                <img src="fluid.png" width="80%">
+                                <p style="font-size: 20px;">End-to-End Fluid Dynamics (Google Research)</p>
+                            </div>
+                        </div>
+                        <p class="r-fit-text fragment" style="font-size: 20px;">However, deep neural networks are vulnerable to adversarial attacks.</p>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <div class="r-vstack">
+                        <p>Traning a model is like constructing a building.</p>
+                        <div class="r-hstack">
+                            <img src="training.gif" width="100%">
+                            <img src="building.gif" width="50%">
+                        </div>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <div class="r-vstack">
+                        <p style="font-size: 28px;">Traning a model is like constructing a building.</p>
+                        <div class="r-hstack">
+                            <img src="training.gif" width="100%">
+                            <img src="building.gif" width="50%">
+                        </div>
+                        <p style="font-size: 28px;">However, a small perturbation can detroy all.</p>
+                        <div class="r-hstack">
+                            <img src="detonate.gif" width="80%">
+                        </div>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <div class="r-vstack">
+                        <p style="font-size: 28px;">Traning a model is like constructing a building.</p>
+                        <div class="r-hstack">
+                            <img src="training.gif" width="100%">
+                            <img src="building.gif" width="50%">
+                        </div>
+                        <p style="font-size: 28px;">However, a small perturbation detroyes all.</p>
+                        <div class="r-hstack">
+                            <img src="short-attack.gif" width="100%" style="margin-right: 10%;">
+                            <img src="detonate.gif" width="25%">
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Full Demo</h2>
+                </section>
+
+                <section data-background-video="detection_no_attack.mp4" data-background-video-loop>
+                </section>
+
+                <section data-background-video="detection_digital_attack.mp4" data-background-video-loop>
+                </section>
+
+                <section data-auto-animate>
+                    <div class="r-vstack">
+                        <p>Deep Learning Models are differentiable</p>
+                        <img src="forward.jpg">
+                        <img src="backward.jpg" class="fragment">
+                        <img src="gradient.jpg" class="fragment">
+                    </div>
+                </section>
+
+                <section data-auto-animate data-auto-animate-unmatched="fade">
+                    <div class="r-vstack">
+                        <p>Deep Learning Models are differentiable</p>
+                        <img src="gradient.jpg" width="90%">
+                        <img src="step1.jpg" class="fragment">
+                        <img src="step2.jpg" class="fragment">
+                        <img src="step3.jpg" class="fragment">
+                    </div>
+                </section>
+
+                <section data-auto-animate data-auto-animate-unmatched="fade">
+                    <div class="r-vstack">
+                        <p>Deep Learning Models are differentiable</p>
+                        <img src="step3.jpg">
+                    </div>
+                </section>
+
+                <section data-auto-animate data-auto-animate-unmatched="fade">
+                    <div class="r-vstack">
+                        <p>Deep Learning Models are differentiable</p>
+                        <img src="step4.jpg">
+                        <div class="fragment">
+                            <p style="font-size: 18px;">Previous research usually calculates the gradient over the loss function.</p>
+                            <p style="font-size: 18px;">
+                                \[\begin{aligned}
+                                \bigtriangledown_{\delta}J(h_{\theta}(x, \delta)), y)
+                                \end{aligned} \]    
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-auto-animate data-auto-animate-unmatched="fade">
+                    <div class="r-vstack">
+                        <p>Deep Learning Models are differentiable</p>
+                        <div>
+                            <p style="font-size: 18px;">Previous research usually calculates the gradient over the loss function.</p>
+                            <p style="font-size: 18px;">
+                                \[\begin{aligned}
+                                \bigtriangledown_{\delta}J(h_{\theta}(x, \delta)), y)
+                                \end{aligned} \]    
+                            </p>
+                            <img src="loss.png" width="50%">
+                            <ul>
+                                <li class="fragment" style="font-size: 18px;">Calculating the loss function sometimes can be expensive. <span style="color: indianred;">(slow iteration on the training set)</span></li>
+                                <li class="fragment" style="font-size: 18px;">For a real-time online attack, we don’t even know the ground truth. <span style="color: indianred;">(infeasible to calculate the loss)</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-auto-animate data-auto-animate-unmatched="fade">
+                    <div class="r-vstack">
+                        <p>Deep Learning Models are differentiable</p>
+                        <img src="step4.jpg">
+                        <p style="font-size: 28px;">If we cannot use the loss function, what should we do?</p>
+                    </div>
+                    <div class="r-hstack fragment">
+                        <div class="r-vstack">
+                            <img src="one_target.jpg" width="80%" style="margin-right: 5%;">
+                            <p style="font-size: 18px;">One Targeted Attack</p>
+                        </div>
+                        <div class="r-vstack">
+                            <img src="multi_target.jpg" width="80%" style="margin-right: 5%;">
+                            <p style="font-size: 18px;">Multi Targeted Attack</p>
+                        </div>
+                        <div class="r-vstack">
+                            <img src="multi_untarget.jpg" width="80%" style="margin-right: 5%;">
+                            <p style="font-size: 18px;">Multi Untargeted Attack</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-auto-animate data-auto-animate-unmatched="fade">
+                    <h4>Adversarial Detection</h4>
+                    <p style="font-size: 20px;">
+                        $$J_1(x, \delta, y_h) = max(\ \sigma(c) * \sigma(p_0) \ )$$
+                    </p>
+                    <pre data-id="code">
+                        <code class="python" data-trim data-line-numbers>
+                            # One Targeted Attack
+                            loss = K.max(K.sigmoid(K.reshape(out, (-1, 8))[:, 4]) * K.sigmoid(K.reshape(out, (-1, 8))[:, 5]))
+                            
+                            grads = K.gradients(loss, self.model.input)
+                        </code>
+                    </pre>
+                    <div class="r-hstack">
+                        <img src="one_target.jpg" width="30%" style="margin-right: 20%;">
+                        <img src="y.jpg">
+                    </div>
+                    <p style="font-size: 28px;">One Targeted Attack</p>
+                </section>
+
+                <section data-auto-animate data-auto-animate-unmatched="fade">
+                    <h4>Adversarial Detection</h4>
+                    <p style="color: #CCC; font-size: 20px;">
+                        $$J_1(x, \delta, y_h) = max(\ \sigma(c) * \sigma(p_0) \ )$$
+                    </p>
+                    <p style="font-size: 20px;">
+                        $$J_2(x, \delta, y_h) = \sigma(c) * \sigma(p_0)$$
+                    </p>
+                    <pre data-id="code">
+                        <code class="python" data-trim data-line-numbers>
+                        # Multi Targeted Attack
+                        loss = K.sigmoid(K.reshape(out, (-1, 8))[:, 4]) * K.sigmoid(K.reshape(out, (-1, 8))[:, 5])
+
+                        grads = K.gradients(loss, self.model.input)
+                        </code>
+                    </pre>
+                    <div class="r-hstack">
+                        <img src="multi_target.jpg" width="30%" style="margin-right: 20%;">
+                        <img src="y.jpg">
+                    </div>
+                    <p style="font-size: 28px;">Multi Targeted Attack</p>
+                </section>
+
+                <section data-auto-animate data-auto-animate-unmatched="fade">
+                    <h4>Adversarial Detection</h4>
+                    <p style="color: #CCC; font-size: 20px;">
+                        $$J_1(x, \delta, y_h) = max(\ \sigma(c) * \sigma(p_0) \ )$$
+                    </p>
+                    <p style="color: #CCC; font-size: 20px;">
+                        $$J_2(x, \delta, y_h) = \sigma(c) * \sigma(p_0)$$
+                    </p>
+                    <p style="font-size: 20px;">
+                        $$J_3(x, \delta, y_h) = \sigma(c) * \sum\sigma(p_i)$$
+                    </p>
+                    <pre data-id="code">
+                        <code class="python" data-trim data-line-numbers>
+                        # Multi Untargeted Attack
+                        loss = K.sigmoid(K.reshape(out, (-1, 8))[:, 4]) * K.sum(K.sigmoid(K.reshape(out, (-1, 8))[:, 5:]))
+
+                        grads = K.gradients(loss, self.model.input)
+                        </code></pre>
+                    <div class="r-hstack">
+                        <img src="multi_untarget.jpg" width="30%" style="margin-right: 20%;">
+                        <img src="y.jpg">
+                    </div>
+                    <p style="font-size: 28px;">Multi Untargeted Attack</p>
+                </section>
+
+                <section>
+                    <h4>Weakness: fast but not the best</h4>
+                    <p style="font-size: 28px;">Object Detection in real world</p>
+                    <img src="minion.gif">
+                    <ul>
+                        <li style="font-size: 28px;">No access to the gradient.</li>
+                        <li style="font-size: 28px;">Infeasible to add digital perturbation.</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Thanks</h2>
+                </section>
+
+            </div>
+        </div>
+
+        <script src="reveal.js"></script>
+        <script src="highlight.js"></script>
+        <script src="math.js"></script>
+        <script>
+            Reveal.initialize({
+                center: true,
+                hash: true,
+                plugins: [ RevealHighlight, RevealMath ],
+                mathjax: 'https://cdn.jsdelivr.net/gh/mathjax/mathjax@2.7.8/MathJax.js',
+                config: 'TeX-AMS_HTML-full',
+                // pass other options into `MathJax.Hub.Config()`
+                TeX: { Macros: { RR: "{\\bf R}" } }
+                // showNotes: true
+            });
+        </script>
+
+    </body>
+</html>
